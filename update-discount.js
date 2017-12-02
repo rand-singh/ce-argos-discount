@@ -20,10 +20,6 @@ function calculateAmountDeducted(percentageOff, currentPrice){
 }
 
 function calculateNewPrice(discount){
-  // var discount_amount = discount;
-
-  // var script = "console.log('Discount amount is " + discount + "');";
-
   chrome.tabs.executeScript({
     code: "var selected_discount =" + discount + " ;"    
   }, function(){
