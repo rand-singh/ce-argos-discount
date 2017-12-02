@@ -66,17 +66,19 @@ function saveDiscount(savedDiscount) {
 document.addEventListener('DOMContentLoaded', () => {
   getCurrentTabUrl((url) => {
 
-    var dropdown = document.getElementById('dropdown');
-
     getSavedDiscount(url, (savedDiscount) => {
       if (savedDiscount) {
         calculateNewPrice(savedDiscount);
       }
     });
 
-    dropdown.addEventListener('change', () => {
-    	calculateNewPrice(dropdown.value);
-      saveDiscount(dropdown.value);
+    var slider = document.getElementById('amount-slider');
+
+    slider.addEventListener('input', () => {
+      console.log(slider.value);
+      calculateNewPrice(slider.value);
+      saveDiscount(slider.value);
+      document.getElementById('rangeValLabel').innerHTML = slider.value;
     });
 
 
