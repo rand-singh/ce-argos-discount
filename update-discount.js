@@ -59,16 +59,30 @@ function saveDiscount(savedDiscount) {
   // optional callback since we don't need to perform any action once the
   // background color is saved.
   chrome.storage.sync.set(items);
-  console.log(items);
+  // console.log(items);
+}
+
+function updateInputSliderValue(value){
+    document.getElementById('amount-slider').value = value;    
+}
+
+function updateSliderValue(sliderValue){
+    document.getElementById('range-value').innerHTML = sliderValue;
 }
 
 
 document.addEventListener('DOMContentLoaded', () => {
   getCurrentTabUrl((url) => {
 
-    getSavedDiscount(url, (savedDiscount) => {
+    getSavedDiscount('discountSavedInMemory', (savedDiscount) => {
       if (savedDiscount) {
         calculateNewPrice(savedDiscount);
+
+        console.log("update slider value to: " + savedDiscount);
+        updateSliderValue(savedDiscount);
+        updateInputSliderValue(savedDiscount);
+      } else {
+        updateSliderValue(10);
       }
     });
 
@@ -78,9 +92,11 @@ document.addEventListener('DOMContentLoaded', () => {
       console.log(slider.value);
       calculateNewPrice(slider.value);
       saveDiscount(slider.value);
-      document.getElementById('rangeValLabel').innerHTML = slider.value;
+      updateSliderValue(slider.value);
     });
 
 
   });
 });
+
+
