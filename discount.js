@@ -1,10 +1,16 @@
+function getSavedDiscount(savedDiscount, callback) {
+  chrome.storage.sync.get(savedDiscount, (items) => {
+    callback(chrome.runtime.lastError ? null : items[savedDiscount]);
+  });
+}
  
 function calculateAmountDeducted(percentageOff, currentPrice){
   return (percentageOff/100) * currentPrice;
 }
 
-function calculateNewPrice(){
-  var discount_amount = 10;
+function calculateNewPrice(savedDiscount){
+ 
+  var discount_amount = savedDiscount;
 
   var product_price_container = $(".product-price-primary");
 
@@ -24,4 +30,16 @@ function calculateNewPrice(){
     }
 }
 
-document.addEventListener("DOMContentLoaded", calculateNewPrice());
+function init(){
+  var url = window.location.href;
+
+  getSavedDiscount(url, (savedDiscount) => {
+    if (savedDiscount) {
+        calculateNewPrice(savedDiscount);
+    } else {
+      calculateNewPrice(10);
+    }
+  });
+}
+
+document.addEventListener("DOMContentLoaded", init());
