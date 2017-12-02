@@ -1,0 +1,36 @@
+.product-price-wrap .price{
+	display: inline-block;
+}
+
+.pdp-pricing-module > .product-price-wrap li.price{
+	padding-bottom: 0;
+	margin-bottom: 10px;
+}
+
+.price.product-price-primary{
+	float: left;
+}
+
+.price.product-price-secondary{
+	float: right;
+	color: #f90;
+}
+
+.product-price-secondary span{
+	font-size: 21px;
+}
+
+.price-align{
+	clear: both;
+}
+
+
+/* Sticky Bar Styles */
+.add-to-trolley__sticky .price.product-price-primary{
+	float: none;
+}
+
+.add-to-trolley__sticky .price.product-price-secondary{
+	float: none;
+
+}

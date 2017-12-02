@@ -1,0 +1,40 @@
+<!doctype html>
+<html>
+  <head>
+    <title>Argos Discount</title>
+    <style type="text/css">
+      body {
+        margin: 20px;
+        white-space: nowrap;
+      }
+
+      h1 {
+        font-size: 15px;
+      }
+
+      input{
+        padding: 5px 10px;
+      }
+
+    </style>
+
+    <script src="update-discount.js"></script>
+  </head>
+
+  <body>
+    <h1>Argos Discount</h1>
+    <p>Set discount: </p>
+    <input type="number" min="0" max="100">
+    <button id="calculate">Calculate/Update</button>
+
+    <select id="dropdown">
+        <option selected disabled hidden value=''></option>
+        <option value="10">10</option>
+        <option value="15">15</option>
+        <option value="20">20</option>
+        <option value="25">25</option>
+    </select>
+
+
+  </body>
+</html>

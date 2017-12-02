@@ -1,0 +1,24 @@
+{
+  "manifest_version": 2,
+
+  "name": "Argos Discount",
+  "description": "Displays the new price for products after percentage discount is applied",
+  "version": "1.0",
+
+  "browser_action": {
+    "default_icon": "icon.png",
+    "default_popup": "popup.html"
+  },
+  "permissions": [
+    "activeTab",
+    "storage"
+  ],
+  "content_scripts": [
+    {
+      "matches": ["http://www.argos.co.uk/product/*"],
+      "css": ["styles.css"],
+      // "js": ["jquery.js", "discount.js"],
+      "js": ["jquery.js"]    
+    }
+  ]
+}
