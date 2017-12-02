@@ -52,9 +52,9 @@ function getSavedDiscount(savedDiscount, callback) {
  * @param {string} url URL for which background color is to be saved.
  * @param {string} color The background color to be saved.
  */
-function saveDiscount(url, savedDiscount) {
+function saveDiscount(savedDiscount) {
   var items = {};
-  items[url] = savedDiscount;
+  items['discountSavedInMemory'] = savedDiscount;
   // See https://developer.chrome.com/apps/storage#type-StorageArea. We omit the
   // optional callback since we don't need to perform any action once the
   // background color is saved.
@@ -76,7 +76,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     dropdown.addEventListener('change', () => {
     	calculateNewPrice(dropdown.value);
-      saveDiscount(url, dropdown.value);
+      saveDiscount(dropdown.value);
     });
 
 
