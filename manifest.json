@@ -1,8 +1,8 @@
 {
   "manifest_version": 2,
 
-  "name": "Argos Discount",
-  "description": "Displays the new price for products after percentage discount is applied",
+  "name": "Argos Discount Viewer",
+  "description": "With this extension you can easily have your discount calculated and displayed alongside the original price on the Argos website.",
   "version": "0.0.1",
 
   "browser_action": {
