@@ -52,33 +52,51 @@ function getSavedDiscount(savedDiscount, callback) {
  * @param {string} url URL for which background color is to be saved.
  * @param {string} color The background color to be saved.
  */
-function saveDiscount(url, savedDiscount) {
+function saveDiscount(savedDiscount) {
   var items = {};
-  items[url] = savedDiscount;
+  items['discountSavedInMemory'] = savedDiscount;
   // See https://developer.chrome.com/apps/storage#type-StorageArea. We omit the
   // optional callback since we don't need to perform any action once the
   // background color is saved.
   chrome.storage.sync.set(items);
-  console.log(items);
+  // console.log(items);
+}
+
+function updateInputSliderValue(value){
+    document.getElementById('amount-slider').value = value;    
+}
+
+function updateSliderValue(sliderValue){
+    document.getElementById('range-value').innerHTML = sliderValue;
 }
 
 
 document.addEventListener('DOMContentLoaded', () => {
   getCurrentTabUrl((url) => {
 
-    var dropdown = document.getElementById('dropdown');
-
-    getSavedDiscount(url, (savedDiscount) => {
+    getSavedDiscount('discountSavedInMemory', (savedDiscount) => {
       if (savedDiscount) {
         calculateNewPrice(savedDiscount);
+
+        console.log("update slider value to: " + savedDiscount);
+        updateSliderValue(savedDiscount);
+        updateInputSliderValue(savedDiscount);
+      } else {
+        updateSliderValue(10);
       }
     });
 
-    dropdown.addEventListener('change', () => {
-    	calculateNewPrice(dropdown.value);
-      saveDiscount(url, dropdown.value);
+    var slider = document.getElementById('amount-slider');
+
+    slider.addEventListener('input', () => {
+      console.log(slider.value);
+      calculateNewPrice(slider.value);
+      saveDiscount(slider.value);
+      updateSliderValue(slider.value);
     });
 
 
   });
 });
+
+

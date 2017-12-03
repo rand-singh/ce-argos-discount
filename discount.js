@@ -31,9 +31,8 @@ function calculateNewPrice(savedDiscount){
 }
 
 function init(){
-  var url = window.location.href;
 
-  getSavedDiscount(url, (savedDiscount) => {
+  getSavedDiscount('discountSavedInMemory', (savedDiscount) => {
     if (savedDiscount) {
         calculateNewPrice(savedDiscount);
     } else {

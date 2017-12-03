@@ -2,36 +2,90 @@
 <html>
   <head>
     <title>Argos Discount</title>
+    <link href="https://fonts.googleapis.com/css?family=Roboto:300,400" rel="stylesheet">
+
     <style type="text/css">
-      body {
-        margin: 20px;
-        white-space: nowrap;
-      }
+        body{
+            margin: 0;
+            padding: 14px;
+            background-color: #d42114;
+            font-family: 'Roboto', sans-serif;
+            color: white;
+        }
 
-      h1 {
-        font-size: 15px;
-      }
+        main{
+            width: 300px;
+        }
 
-      input{
-        padding: 5px 10px;
-      }
+        heading{
+            display:block;
+        }
 
+        h1{
+            margin-top: 0;
+            text-align: center;
+            font-weight: 400;
+        }
+
+        .container{
+            margin: 25px 10px 0 10px;
+        }
+
+        .container > div{
+
+        }
+
+        .range{width: 75%; display: inline-block; float: left;}
+        .value{width: 25%; display: inline-block; float: left;}
+
+        input{
+            width: 100%;
+        }
+
+        .clear{
+            clear: both;
+        }
     </style>
 
     <script src="update-discount.js"></script>
   </head>
 
   <body>
-    <h1>Argos Discount</h1>
-    <p>Set discount: </p>
-    <select id="dropdown">
-        <option selected disabled hidden value=''></option>
-        <option value="10">10</option>
-        <option value="15">15</option>
-        <option value="20">20</option>
-        <option value="25">25</option>
-    </select>
+    <main>
+        <heading>
+            <h1 class="text-center">Set your Argos Discount</h1>
+        </heading>
+        
+        <div class="container">
 
+            <div class="range">
+                <input type="range" id="amount-slider" list="tickmarks" min="5" max="50" value="10" step="5">
+
+                <datalist id="tickmarks">
+                  <option value="5" label="5%">
+                  <option value="10">
+                  <option value="15">
+                  <option value="20">
+                  <option value="25">
+                  <option value="30" label="30%">
+                  <option value="35">
+                  <option value="40">
+                  <option value="45">
+                  <option value="50" label="50%">
+                </datalist>
+                
+            </div>
+
+            <div class="value">
+                <h1><span id="range-value"></span>%</h1>
+            </div>
+
+            <div class="clear"></div>
+
+        </div>
+    
+
+    </main>
 
   </body>
 </html>
