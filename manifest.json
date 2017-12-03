@@ -18,7 +18,6 @@
       "matches": ["http://www.argos.co.uk/product/*"],
       "css": ["styles.css"],
       "js": ["jquery.js", "discount.js"]
-      // "js": ["jquery.js"]    
     }
   ]
 }
