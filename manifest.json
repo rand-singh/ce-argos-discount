@@ -2,7 +2,7 @@
   "manifest_version": 2,
 
   "name": "Argos Discount Viewer",
-  "description": "With this plugin you can easily have your discount automatically calculated and displayed alongside the orgiinal price.",
+  "description": "With this extension you can easily have your discount calculated and displayed alongside the original price on the Argos website.",
   "version": "0.0.1",
 
   "browser_action": {
