@@ -2,7 +2,7 @@
   "manifest_version": 2,
 
   "name": "Argos Discount Viewer",
-  "description": "Displays the new price for products after percentage discount is applied",
+  "description": "With this plugin you can easily have your discount automatically calculated and displayed alongside the orgiinal price.",
   "version": "0.0.1",
 
   "browser_action": {
