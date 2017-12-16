@@ -3,7 +3,7 @@
 
   "name": "Argos Discount Viewer",
   "description": "With this extension you can easily have your discount calculated and displayed alongside the original price on the Argos website.",
-  "version": "0.0.1",
+  "version": "0.0.2",
 
   "icons": { 
     "16": "icons/icon_16.png",
@@ -22,7 +22,7 @@
   ],
   "content_scripts": [
     {
-      "matches": ["http://www.argos.co.uk/product/*"],
+      "matches": ["http://www.argos.co.uk/product/*", "https://www.argos.co.uk/product/*"],
       "css": ["styles.css"],
       "js": ["jquery.js", "discount.js"]
     }
