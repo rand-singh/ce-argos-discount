@@ -24,7 +24,7 @@ function calculateNewPrice(discount){
     code: "var selected_discount =" + discount + " ;"    
   }, function(){
     chrome.tabs.executeScript({
-      file: "calculate.js"
+      file: "js/calculate.js"
     })
   });
 }
@@ -74,6 +74,10 @@ function updateSliderValue(sliderValue){
 document.addEventListener('DOMContentLoaded', () => {
   getCurrentTabUrl((url) => {
 
+    // if user opens popup on non argos domain
+    if(!url.includes(".argos.co.uk/product/")){
+    }
+
     getSavedDiscount('discountSavedInMemory', (savedDiscount) => {
       if (savedDiscount) {
         calculateNewPrice(savedDiscount);
@@ -89,7 +93,6 @@ document.addEventListener('DOMContentLoaded', () => {
     var slider = document.getElementById('amount-slider');
 
     slider.addEventListener('input', () => {
-      console.log(slider.value);
       calculateNewPrice(slider.value);
       saveDiscount(slider.value);
       updateSliderValue(slider.value);
