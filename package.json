@@ -1,0 +1,29 @@
+{
+  "name": "ce-argos-discount",
+  "version": "0.0.4",
+  "description": "\u0016A Chrome extension which calculates and displays your discounted price alongsode the original price on the Argos Website",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/rand-singh/ce-argos-discount.git"
+  },
+  "keywords": [
+    "Argos",
+    "Discount",
+    "Viewer",
+    "Chrome",
+    "Extension"
+  ],
+  "author": "Randeep Singh",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/rand-singh/ce-argos-discount/issues"
+  },
+  "homepage": "https://github.com/rand-singh/ce-argos-discount#readme",
+  "devDependencies": {
+    "grunt": "^1.0.1",
+    "grunt-cli": "^1.2.0",
+    "grunt-contrib-clean": "^1.1.0",
+    "grunt-contrib-compress": "^1.4.3",
+    "grunt-contrib-copy": "^1.0.0"
+  }
+}

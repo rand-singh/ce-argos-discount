@@ -81,8 +81,7 @@ document.addEventListener('DOMContentLoaded', () => {
     getSavedDiscount('discountSavedInMemory', (savedDiscount) => {
       if (savedDiscount) {
         calculateNewPrice(savedDiscount);
-
-        console.log("update slider value to: " + savedDiscount);
+        
         updateSliderValue(savedDiscount);
         updateInputSliderValue(savedDiscount);
       } else {
