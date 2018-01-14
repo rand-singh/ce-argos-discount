@@ -31,13 +31,39 @@ module.exports = function(grunt) {
 		},
 
 		// Remove copied zip files to keep root clean
-		clean: ['*.zip']
+		clean: ['*.zip'],
+
+		// Compile scss to css
+		sass: {
+			dist: {
+				options: {
+					style: 'compressed',
+					sourcemap: 'none',
+					noCache: true
+				},
+				files: {
+					'css/popup-styles.css' : 'sass/popup-styles.scss',
+					'css/styles.css' : 'sass/styles.scss'
+				}
+			}
+		},
+
+		// Watch for changes to scss files and run task sass
+		watch: {
+			css: {
+				files: 'sass/*.scss',
+				tasks: ['sass']
+			}
+		}
 
 	});
 
 	grunt.loadNpmTasks('grunt-contrib-compress');
 	grunt.loadNpmTasks('grunt-contrib-copy');
 	grunt.loadNpmTasks('grunt-contrib-clean');
+
+	grunt.loadNpmTasks('grunt-contrib-sass');
+	grunt.loadNpmTasks('grunt-contrib-watch');
 
 	grunt.registerTask('dist', ['compress', 'copy', 'clean']);
 };
