@@ -25,7 +25,7 @@
   "content_scripts": [
     {
       "matches": ["http://www.argos.co.uk/product/*", "https://www.argos.co.uk/product/*"],
-      "css": ["css/styles.css"],
+      "css": ["css/content_scripts-styles.css"],
       "js": ["js/jquery.js", "js/discount.js"]
     }
   ]

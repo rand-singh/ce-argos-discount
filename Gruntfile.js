@@ -43,7 +43,7 @@ module.exports = function(grunt) {
 				},
 				files: {
 					'css/popup-styles.css' : 'sass/popup-styles.scss',
-					'css/styles.css' : 'sass/styles.scss'
+					'css/content_scripts-styles.css' : 'sass/content_scripts.scss'
 				}
 			}
 		},
@@ -51,7 +51,7 @@ module.exports = function(grunt) {
 		// Watch for changes to scss files and run task sass
 		watch: {
 			css: {
-				files: 'sass/*.scss',
+				files: ['sass/*.scss', 'sass/**/*.scss'],
 				tasks: ['sass']
 			}
 		}

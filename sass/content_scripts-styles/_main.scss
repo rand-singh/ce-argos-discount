@@ -7,10 +7,6 @@
 	margin-bottom: 10px;
 }
 
-.price.product-price-primary{
-	/*float: left;*/
-}
-
 .price.product-price-secondary{
 	float: right;
 	color: #f90;
@@ -22,15 +18,4 @@
 
 .price-align{
 	clear: both;
-}
-
-
-/* Sticky Bar Styles */
-.add-to-trolley__sticky .price.product-price-primary{
-	float: none;
-}
-
-.add-to-trolley__sticky .price.product-price-secondary{
-	float: none;
-
 }
