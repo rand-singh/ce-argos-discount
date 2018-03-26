@@ -1,7 +1,10 @@
-.add-to-trolley__sticky .price.product-price-primary{
-	float: none;
+.sticky-bar {
+	.product-price-primary {
+		float: none;
+	}
+
+	.product-price-secondary {
+		float: none;
+	}
 }
 
-.add-to-trolley__sticky .price.product-price-secondary{
-	float: none;
-}

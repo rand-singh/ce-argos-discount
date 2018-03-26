@@ -1,21 +1,25 @@
-.product-price-wrap .price{
-	display: inline-block;
+.product-price-wrap {
+	.price {
+		display: inline-block;
+    }
 }
 
-.pdp-pricing-module > .product-price-wrap li.price{
-	padding-bottom: 0;
-	margin-bottom: 10px;
+.pdp-pricing-module > .product-price-wrap {
+	.price {
+		margin-bottom: 10px;
+		padding-bottom: 0;
+	}
 }
 
-.price.product-price-secondary{
+.price.product-price-secondary {
+	color: $orange;
 	float: right;
-	color: #f90;
+
+	span {
+		font-size: 21px;
+	}
 }
 
-.product-price-secondary span{
-	font-size: 21px;
-}
-
-.price-align{
+.price-align {
 	clear: both;
 }
