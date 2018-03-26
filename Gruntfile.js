@@ -5,7 +5,7 @@ module.exports = function(grunt) {
 
 	grunt.initConfig({
 
-		// Create zip file ready for upload to Chrome Store 
+		// Create zip file ready for upload to Chrome Store
 		compress: {
 			main: {
 				options: {
@@ -14,7 +14,7 @@ module.exports = function(grunt) {
 				},
 				files: [
 					{
-						expand: true, 
+						expand: true,
 						src: ['css/*','icons/*','js/*','manifest.json','popup.html']
 					}
 				]
@@ -32,6 +32,15 @@ module.exports = function(grunt) {
 
 		// Remove copied zip files to keep root clean
 		clean: ['*.zip'],
+
+		// Lint scss files using Node Sass
+		scsslint: {
+			options: {
+				colorizeOutput: true,
+				configFile: '.scss-lint.yml'
+			},
+			allFiles: ['sass/**/*.scss']
+		},
 
 		// Compile scss to css
 		sass: {
@@ -52,7 +61,7 @@ module.exports = function(grunt) {
 		watch: {
 			css: {
 				files: ['sass/*.scss', 'sass/**/*.scss'],
-				tasks: ['sass']
+				tasks: ['scsslint','sass']
 			}
 		}
 
@@ -61,6 +70,8 @@ module.exports = function(grunt) {
 	grunt.loadNpmTasks('grunt-contrib-compress');
 	grunt.loadNpmTasks('grunt-contrib-copy');
 	grunt.loadNpmTasks('grunt-contrib-clean');
+
+    grunt.loadNpmTasks('grunt-scss-lint');
 
 	grunt.loadNpmTasks('grunt-contrib-sass');
 	grunt.loadNpmTasks('grunt-contrib-watch');
