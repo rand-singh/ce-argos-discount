@@ -21,7 +21,7 @@ function calculateAmountDeducted(percentageOff, currentPrice){
 
 function calculateNewPrice(discount){
   chrome.tabs.executeScript({
-    code: "var selected_discount =" + discount + " ;"    
+    code: "var selected_discount =" + discount + " ;"
   }, function(){
     chrome.tabs.executeScript({
       file: "js/calculate.js"
@@ -63,13 +63,19 @@ function saveDiscount(savedDiscount) {
 }
 
 function updateInputSliderValue(value){
-    document.getElementById('amount-slider').value = value;    
+    document.getElementById('amount-slider').value = value;
 }
 
 function updateSliderValue(sliderValue){
     document.getElementById('range-value').innerHTML = sliderValue;
 }
 
+function updateValues(value) {
+	calculateNewPrice(value);
+	saveDiscount(value);
+	updateSliderValue(value);
+	updateInputSliderValue(value);
+}
 
 document.addEventListener('DOMContentLoaded', () => {
   getCurrentTabUrl((url) => {
@@ -81,7 +87,7 @@ document.addEventListener('DOMContentLoaded', () => {
     getSavedDiscount('discountSavedInMemory', (savedDiscount) => {
       if (savedDiscount) {
         calculateNewPrice(savedDiscount);
-        
+
         updateSliderValue(savedDiscount);
         updateInputSliderValue(savedDiscount);
       } else {
