@@ -91,14 +91,28 @@ document.addEventListener('DOMContentLoaded', () => {
 
     var slider = document.getElementById('amount-slider');
 
+	const increment = document.getElementById('increment');
+	const decrement = document.getElementById('decrement');
+
+	increment.addEventListener('click', () => {
+		if(parseInt(slider.value) < 50 ) {
+			const percentageOff = parseInt(slider.value) + 5;
+			updateValues(percentageOff);
+		}
+	});
+
+	decrement.addEventListener('click', () => {
+		if(parseInt(slider.value) > 5 ) {
+			const percentageOff = parseInt(slider.value) - 5;
+			updateValues(percentageOff);
+		}
+	});
+
     slider.addEventListener('input', () => {
       calculateNewPrice(slider.value);
       saveDiscount(slider.value);
       updateSliderValue(slider.value);
     });
 
-
   });
 });
-
-
