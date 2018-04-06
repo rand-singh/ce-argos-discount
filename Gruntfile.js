@@ -15,7 +15,7 @@ module.exports = function(grunt) {
 				files: [
 					{
 						expand: true,
-						src: ['css/*','icons/*','js/*','manifest.json','popup.html']
+						src: ['css/*','icons/*','images/*','js/*','manifest.json','popup.html']
 					}
 				]
 			}
