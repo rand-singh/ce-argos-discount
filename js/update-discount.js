@@ -95,10 +95,10 @@ document.addEventListener('DOMContentLoaded', () => {
       }
     });
 
-    var slider = document.getElementById('amount-slider');
-
-	const increment = document.getElementById('increment');
-	const decrement = document.getElementById('decrement');
+    const slider = document.getElementById('amount-slider'),
+		increment = document.getElementById('increment'),
+		decrement = document.getElementById('decrement'),
+		argosLogo = document.getElementById('argos-logo');
 
 	increment.addEventListener('click', () => {
 		if(parseInt(slider.value) < 50 ) {
@@ -120,5 +120,7 @@ document.addEventListener('DOMContentLoaded', () => {
       updateSliderValue(slider.value);
     });
 
+    argosLogo.addEventListener('click', () => {
+    	chrome.tabs.create({url: 'https://www.argos.co.uk'})})
   });
 });

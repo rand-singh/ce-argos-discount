@@ -1,0 +1,42 @@
+$tooltip-width: 170px;
+$tooltip-margin: -($tooltip-width / 2);
+
+.tooltip-text {
+	background-color: $tooltip-background;
+	border-radius: 6px;
+	box-shadow: 0 8px 6px -6px $black;
+	color: $white;
+	margin: 10px $tooltip-margin 0;
+	padding: 5px 0;
+	position: absolute;
+	text-align: center;
+	transition: all .2s;
+	visibility: hidden;
+	width: $tooltip-width;
+	z-index: 100;
+}
+
+.tooltip-text::after {
+	border: 5px solid;
+	border-color: transparent transparent $tooltip-background;
+	bottom: 100%;
+	content: ' ';
+	left: 50%;
+	margin-left: -5px;
+	position: absolute;
+}
+
+.logo:hover .tooltip-text {
+	visibility: visible;
+}
+
+header svg {
+	transition: all .2s;
+	zoom: 1.2;
+}
+
+header svg:hover {
+	box-shadow: 0 8px 6px -6px $black;
+	cursor: pointer;
+	transform: scale(1.05);
+}

@@ -12,8 +12,12 @@ header {
 	background-color: $header-background;
 	box-shadow: 1px 1px 10px 1px $header-shadow;
 	display: block;
-	padding: 15px;
+	padding: 20px;
 	text-align: center;
+
+	.logo {
+		display: inline-block;
+	}
 
 	img {
 		display: block;
