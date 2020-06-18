@@ -26,12 +26,12 @@ function calculateNewPrice(savedDiscount) {
 		var discount_price = current_price - amount_deducted;
 
 		product_price_container.insertAdjacentHTML(
-			"afterend",
-			"<li class='price product-price-secondary'><h2><span>" +
+			"beforeend",
+			"<h2 class='product-price-discounted'><span>" +
 				discount_amount +
 				"% off </span>&pound;" +
 				discount_price.toFixed(2) +
-				"</h2></li>"
+				"</h2>"
 		);
 	} else {
 		console.log("Original Price Not Found");

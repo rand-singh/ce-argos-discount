@@ -4,14 +4,17 @@
 	}
 }
 
+.pdp-pricing-module ul {
+	margin-bottom: 20px;
+}
+
 .pdp-pricing-module > .product-price-wrap {
 	.price {
 		margin-bottom: 10px;
-		padding-bottom: 0;
-	}
+		padding-bottom: 0;	}
 }
 
-.price.product-price-secondary {
+.product-price-discounted {
 	color: $orange;
 	float: right;
 
