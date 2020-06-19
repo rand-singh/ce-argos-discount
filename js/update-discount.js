@@ -1,3 +1,9 @@
+/**
+ * Get all the tabs that have 
+ * the specified properties
+ * 
+ * @param {*} callback 
+ */
 function getCurrentTabUrl(callback) {
 
   var queryInfo = {
@@ -15,10 +21,22 @@ function getCurrentTabUrl(callback) {
   });
 }
 
+/**
+ * Calculate the amount to take 
+ * away from full price
+ * 
+ * @param {*} percentageOff 
+ * @param {*} currentPrice 
+ */
 function calculateAmountDeducted(percentageOff, currentPrice){
   return (percentageOff/100) * currentPrice;
 }
 
+/**
+ * Calculates the new price 
+ * 
+ * @param {*} discount 
+ */
 function calculateNewPrice(discount){
   chrome.tabs.executeScript({
     code: "var selected_discount =" + discount + " ;"
@@ -62,14 +80,33 @@ function saveDiscount(savedDiscount) {
   // console.log(items);
 }
 
+/**
+ * Update the slider input 
+ * value in the popup
+ * 
+ * @param {*} value 
+ */
 function updateInputSliderValue(value){
     document.getElementById('amount-slider').value = value;
 }
 
+/**
+ * Update the text displayed
+ * value in the popup
+ * 
+ * @param {*} sliderValue 
+ */
 function updateSliderValue(sliderValue){
     document.getElementById('range-value').innerHTML = sliderValue;
 }
 
+/**
+ * Updates all values when the 
+ * increment or decrement 
+ * button is clicked 
+ * 
+ * @param {*} value 
+ */
 function updateValues(value) {
 	calculateNewPrice(value);
 	saveDiscount(value);
@@ -120,7 +157,6 @@ document.addEventListener('DOMContentLoaded', () => {
       updateSliderValue(slider.value);
     });
 
-    argosLogo.addEventListener('click', () => {
-    	chrome.tabs.create({url: 'https://www.argos.co.uk'})})
+    argosLogo.addEventListener('click', () => chrome.tabs.create({url: 'https://www.argos.co.uk'}))
   });
 });
