@@ -17,10 +17,12 @@
     "default_icon": "icons/icon_128.png",
     "default_popup": "popup.html"
   },
+  
   "permissions": [
     "activeTab",
     "storage"
   ],
+
   "content_scripts": [
     {
       "matches": ["http://www.argos.co.uk/product/*", "https://www.argos.co.uk/product/*"],
