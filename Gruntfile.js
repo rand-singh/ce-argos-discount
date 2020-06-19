@@ -51,8 +51,8 @@ module.exports = function(grunt) {
 					noCache: true
 				},
 				files: {
-					'css/popup-styles.css' : 'sass/popup-styles.scss',
-					'css/content_scripts-styles.css' : 'sass/content_scripts.scss'
+					'css/popup-styles.min.css' : 'sass/popup-styles.scss',
+					'css/content_scripts-styles.min.css' : 'sass/content_scripts.scss'
 				}
 			}
 		},
