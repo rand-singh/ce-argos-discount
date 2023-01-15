@@ -1,32 +1,35 @@
 {
-  "manifest_version": 2,
-
+  "manifest_version": 3,
   "name": "Argos Discount Viewer",
+  "version": "1.0.1",
+
+  "action": {
+    "default_icon": {
+      "16": "icons/icon_16.png",
+      "32": "icons/icon_32.png",
+      "48": "icons/icon_48.png"
+    },
+    "default_title": "Argos Discount Viewer",
+    "default_popup": "./popup/popup.html"
+  },
   "description": "With this extension you can easily have your discount calculated and displayed alongside the original price on the Argos website.",
-  "version": "0.0.9",
-  "content_security_policy": "script-src 'self' https://www.google-analytics.com https://www.googletagmanager.com; object-src 'self'",
-
-
   "icons": {
     "16": "icons/icon_16.png",
     "32": "icons/icon_32.png",
     "48": "icons/icon_48.png",
     "128": "icons/icon_128.png"
   },
-
-  "browser_action": {
-    "default_icon": "icons/icon_128.png",
-    "default_popup": "popup.html"
-  },
+  
+  "author": "R Corp",
+  "content_scripts": [
+    {
+      "matches": ["https://www.argos.co.uk/product/*"],
+      "css": ["css/content_scripts-styles.css"],
+      "js": ["js/contentScript.js"]
+    }
+  ],
   "permissions": [
     "activeTab",
     "storage"
-  ],
-  "content_scripts": [
-    {
-      "matches": ["http://www.argos.co.uk/product/*", "https://www.argos.co.uk/product/*"],
-      "css": ["css/content_scripts-styles.css"],
-      "js": ["js/discount.js"]
-    }
   ]
 }

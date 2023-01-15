@@ -1,28 +1,16 @@
-.product-price-wrap {
-	.price {
-		display: inline-block;
-	}
-}
-
-.pdp-pricing-module ul {
-	margin-bottom: 20px;
-}
-
-.pdp-pricing-module > .product-price-wrap {
-	.price {
-		margin-bottom: 10px;
-		padding-bottom: 0;	}
+.discount-container {
+	background-color: $theme-grey-3;
+	border-top: 1px solid $theme-grey-2;
+	bottom: 0;
+	font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+	height: auto;
+	padding: 30px;
+	position: fixed;
+	text-align: center;
+	width: 100%;
+	z-index: 99999;
 }
 
 .product-price-discounted {
-	color: $orange;
 	float: right;
-
-	span {
-		font-size: 21px;
-	}
-}
-
-.price-align {
-	clear: both;
 }
