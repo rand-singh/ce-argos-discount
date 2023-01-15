@@ -1,5 +1,5 @@
 function getSavedDiscount(savedDiscount, callback) {
-	chrome.storage.sync.get(savedDiscount, (items) => {
+	chrome.storage.sync.get(savedDiscount, (items) => {		
 		callback(chrome.runtime.lastError ? null : items[savedDiscount]);
 	});
 }
@@ -39,13 +39,35 @@ function calculateNewPrice(savedDiscount) {
 }
 
 function init() {
-	getSavedDiscount("discountSavedInMemory", (savedDiscount) => {
-		if (savedDiscount) {
-			calculateNewPrice(savedDiscount);
-		} else {
-			calculateNewPrice(10);
-		}
-	});
+	const targetNode = document.getElementById("app")
+
+    const config = {
+        attributes: true, 
+        childList: true, 
+        characterData: true,
+        subtree: true 
+    };
+
+    const callback = mutations => {  
+        mutations.forEach(mutation => {
+
+            if (mutation.type === 'childList') {
+                if (mutation.target.classList?.contains('pdp-pricing-module')) {
+					getSavedDiscount("discountSavedInMemory", (savedDiscount) => {
+						if (savedDiscount) {
+							calculateNewPrice(savedDiscount);
+						} else {
+							calculateNewPrice(10);
+						}
+					});
+                }
+            }
+        });
+    }
+
+    const observer = new MutationObserver(callback);
+
+    observer.observe(targetNode, config);
 }
 
 document.addEventListener("DOMContentLoaded", init());
