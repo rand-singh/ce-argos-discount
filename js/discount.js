@@ -44,6 +44,15 @@ function init() {
     const callback = mutations => {
         mutations.forEach(mutation => {
             if (mutation.type === 'childList') {
+				const addedNodes = mutation.addedNodes
+				
+				if (addedNodes.length) {
+					Array.from(addedNodes).forEach(function(ele) {
+						ele.classList?.contains('pdp-right') &&
+						getSavedDiscount('discountSavedInMemory', (savedDiscount) => savedDiscount ? calculateNewPrice(savedDiscount) : calculateNewPrice(10))
+					});
+				}
+
                 if (mutation.target.classList?.contains('pdp-pricing-module') || mutation.target.classList.contains('xs-block')) {
 					getSavedDiscount('discountSavedInMemory', (savedDiscount) => savedDiscount ? calculateNewPrice(savedDiscount) : calculateNewPrice(10))
                 }
