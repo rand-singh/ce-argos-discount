@@ -1,17 +1,17 @@
 function getCurrentTabUrl(callback) {
-
-  var queryInfo = {
+  const queryInfo = {
     active: true,
     currentWindow: true
   };
 
   chrome.tabs.query(queryInfo, (tabs) => {
-    var tab = tabs[0];
-    var url = tab.url;
+    const tab = tabs[0];
+    const url = tab.url;
+    const id = tab.id
 
     console.assert(typeof url == 'string', 'tab.url should be a string');
 
-    callback(url);
+    callback(url, id);
   });
 }
 
@@ -19,14 +19,47 @@ function calculateAmountDeducted(percentageOff, currentPrice){
   return (percentageOff/100) * currentPrice;
 }
 
-function calculateNewPrice(discount){
-  chrome.tabs.executeScript({
-    code: "var selected_discount =" + discount + " ;"
-  }, function(){
-    chrome.tabs.executeScript({
-      file: "js/calculate.js"
-    })
-  });
+function reCalculate(selected_discount) {
+  const current_price = document.querySelector("section.pdp-pricing-module ul li").getAttribute("content");
+
+  function calculateAmountDeducted(percentageOff, currentPrice){
+    return (percentageOff/100) * currentPrice;
+  }
+  
+  if (current_price) {
+    var amount_deducted = calculateAmountDeducted(
+      selected_discount,
+      current_price
+    );
+
+    var discount_price = current_price - amount_deducted;
+
+    if (document.querySelector('.product-price-discounted')) {
+      document.querySelector('.product-price-discounted').innerHTML =
+				`
+					<li>
+							<h2>${selected_discount}% off &pound;${discount_price.toFixed(2)}</h2>
+						</li>
+						<li>
+							<span>saving &pound;${amount_deducted.toFixed(2)}</span>
+					</li>
+				`;
+    }
+
+  } else {
+    console.log("Original Price Not Found");
+  }
+}
+
+function calculateNewPrice(discount, tabId) {
+  chrome.scripting.executeScript(
+    {
+      target: {tabId: tabId},
+      func: reCalculate,
+      args: [discount]
+    },
+    () => {}
+  )
 }
 
 /**
@@ -70,24 +103,22 @@ function updateSliderValue(sliderValue){
     document.getElementById('range-value').innerHTML = sliderValue;
 }
 
-function updateValues(value) {
-	calculateNewPrice(value);
+function updateValues(value, tabId) {
+	calculateNewPrice(value, tabId);
 	saveDiscount(value);
 	updateSliderValue(value);
 	updateInputSliderValue(value);
 }
 
 document.addEventListener('DOMContentLoaded', () => {
-  getCurrentTabUrl((url) => {
-
+  getCurrentTabUrl((url, tabId) => {
     // if user opens popup on non argos domain
     if(!url.includes(".argos.co.uk/product/")){
     }
 
     getSavedDiscount('discountSavedInMemory', (savedDiscount) => {
       if (savedDiscount) {
-        calculateNewPrice(savedDiscount);
-
+        calculateNewPrice(savedDiscount, tabId);
         updateSliderValue(savedDiscount);
         updateInputSliderValue(savedDiscount);
       } else {
@@ -100,22 +131,22 @@ document.addEventListener('DOMContentLoaded', () => {
 		decrement = document.getElementById('decrement'),
 		argosLogo = document.getElementById('argos-logo');
 
-	increment.addEventListener('click', () => {
-		if(parseInt(slider.value) < 50 ) {
-			const percentageOff = parseInt(slider.value) + 5;
-			updateValues(percentageOff);
-		}
-	});
+    increment.addEventListener('click', () => {
+      if (parseInt(slider.value) < 50 ) {
+        const percentageOff = parseInt(slider.value) + 5;
+        updateValues(percentageOff, tabId);
+      }
+    });
 
-	decrement.addEventListener('click', () => {
-		if(parseInt(slider.value) > 5 ) {
-			const percentageOff = parseInt(slider.value) - 5;
-			updateValues(percentageOff);
-		}
-	});
+    decrement.addEventListener('click', () => {
+      if (parseInt(slider.value) > 5 ) {
+        const percentageOff = parseInt(slider.value) - 5;
+        updateValues(percentageOff, tabId);
+      }
+    });
 
-    slider.addEventListener('input', () => {
-      calculateNewPrice(slider.value);
+    slider.addEventListener('input', (e) => {
+      calculateNewPrice(slider.value, tabId);
       saveDiscount(slider.value);
       updateSliderValue(slider.value);
     });

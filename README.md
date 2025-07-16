@@ -11,3 +11,7 @@ update-discount.js - runs inside the popup
 discount.js - injected onto web pages via content scripts in manifest
 
 calculate.js - injected from update-discount.js inside calculateNewPrice method
+
+# Setup
+Ruby https://github.com/oneclick/rubyinstaller2/releases/download/RubyInstaller-3.2.2-1/rubyinstaller-devkit-3.2.2-1-x64.exe
+Grunt https://gruntjs.com/getting-started

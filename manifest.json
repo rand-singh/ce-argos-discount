@@ -1,30 +1,34 @@
 {
-  "manifest_version": 2,
-
-  "name": "Argos Discount Viewer",
-  "description": "With this extension you can easily have your discount calculated and displayed alongside the original price on the Argos website.",
-  "version": "0.0.9",
-  "content_security_policy": "script-src 'self' https://www.google-analytics.com https://www.googletagmanager.com; object-src 'self'",
-
-
+  "manifest_version": 3,  
+  "name": "Argos Colleague Discount",
+  "version": "1.2.2",
+  "action": {
+    "default_icon": {
+      "16": "icons/icon_16.png",
+      "32": "icons/icon_32.png",
+      "48": "icons/icon_48.png",
+      "128": "icons/icon_128.png"
+    },
+    "default_title": "Argos Colleague Discount",
+    "default_popup": "popup.html"
+  },
+  "description": "With this extension you can easily view your colleague discount alongside the original price on the Argos website.",
   "icons": {
     "16": "icons/icon_16.png",
     "32": "icons/icon_32.png",
     "48": "icons/icon_48.png",
     "128": "icons/icon_128.png"
   },
-
-  "browser_action": {
-    "default_icon": "icons/icon_128.png",
-    "default_popup": "popup.html"
-  },
   "permissions": [
     "activeTab",
-    "storage"
+    "storage",
+    "scripting"
   ],
   "content_scripts": [
     {
-      "matches": ["http://www.argos.co.uk/product/*", "https://www.argos.co.uk/product/*"],
+      "matches": [
+        "https://www.argos.co.uk/product/*"
+      ],
       "css": ["css/content_scripts-styles.css"],
       "js": ["js/discount.js"]
     }
