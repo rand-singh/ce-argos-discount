@@ -36,10 +36,14 @@ function reCalculate(selected_discount) {
 
     if (document.querySelector('.product-price-discounted')) {
       document.querySelector('.product-price-discounted').innerHTML =
-      "<span>" +
-        selected_discount +
-        "% off </span>&pound;" +
-        discount_price.toFixed(2);
+				`
+					<li>
+							<h2>${selected_discount}% off &pound;${discount_price.toFixed(2)}</h2>
+						</li>
+						<li>
+							<span>saving &pound;${amount_deducted.toFixed(2)}</span>
+					</li>
+				`;
     }
 
   } else {

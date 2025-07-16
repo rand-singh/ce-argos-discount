@@ -10,25 +10,30 @@ function calculateAmountDeducted(percentageOff, currentPrice) {
 
 function calculateNewPrice(savedDiscount) {
 	const discount_amount = savedDiscount
-	const product_price_container = document.querySelector('section.pdp-pricing-module ul li')
-	const current_price = product_price_container.getAttribute('content')
+	const product_price_container = document.querySelector('section.pdp-pricing-module ul')
+	const current_price = document.querySelector('section.pdp-pricing-module ul li').getAttribute('content')
 
 	if (current_price) {
 		const amount_deducted = calculateAmountDeducted(discount_amount, current_price)
 		const discount_price = current_price - amount_deducted
 
-		if (!product_price_container.querySelector('h2.product-price-discounted')) {
+		if (!product_price_container.parentElement.querySelector('ul.product-price-discounted')) {
 			product_price_container.insertAdjacentHTML(
-				'beforeend',
+				'afterend',
 				`
-					<h2 class='product-price-discounted'>
-						<span>${discount_amount}% off </span>&pound;${discount_price.toFixed(2)}
-					</h2>
+					<ul class='product-price-discounted'>
+						<li>
+							<h2>${discount_amount}% off &pound;${discount_price.toFixed(2)}</h2>
+						</li>
+						<li>
+							<span>saving &pound;${amount_deducted.toFixed(2)}</span>
+						</li>
+					</ul>
 				`
 			)
 		}
 	} else {
-		console.log('Original Price Not Found')
+		console.error('Original Price Not Found')
 	}
 }
 
