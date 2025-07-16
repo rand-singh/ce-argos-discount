@@ -4,22 +4,29 @@
 	}
 }
 
-.pdp-pricing-module ul {
-	margin-bottom: 20px;
+.pdp-pricing-module > div:first-of-type {
+	align-items: flex-start;
+	justify-content: space-between;
 }
 
 .pdp-pricing-module > .product-price-wrap {
 	.price {
 		margin-bottom: 10px;
-		padding-bottom: 0;	}
+		padding-bottom: 0;
+	}
 }
 
 .product-price-discounted {
 	color: $orange;
-	float: right;
+
+	li {
+		h2 {
+			margin-bottom: 0;
+		}
+	}
 
 	span {
-		font-size: 21px;
+		font-size: 16px;
 	}
 }
 
