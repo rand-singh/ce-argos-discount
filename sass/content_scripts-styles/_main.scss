@@ -4,16 +4,21 @@
 	}
 }
 
-.pdp-pricing-module > div:first-of-type {
-	align-items: flex-start;
-	justify-content: space-between;
-}
+// .pdp-pricing-module > div:first-of-type {
+// 	align-items: flex-start;
+// 	justify-content: space-between;
+// }
 
 .pdp-pricing-module > .product-price-wrap {
 	.price {
 		margin-bottom: 10px;
 		padding-bottom: 0;
 	}
+}
+
+.pdp-pricing-module .acd-price-parent {
+	align-items: flex-start;
+	justify-content: space-between;
 }
 
 .product-price-discounted {

@@ -10,6 +10,7 @@ function calculateAmountDeducted(percentageOff, currentPrice) {
 
 function calculateNewPrice(savedDiscount) {
 	const discount_amount = savedDiscount
+	document.querySelector('section.pdp-pricing-module ul').parentElement.classList.add('acd-price-parent')
 	const product_price_container = document.querySelector('section.pdp-pricing-module ul')
 	const current_price = document.querySelector('section.pdp-pricing-module ul li').getAttribute('content')
 
