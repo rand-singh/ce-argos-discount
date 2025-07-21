@@ -1,6 +1,6 @@
 {
   "name": "ce-argos-discount",
-  "version": "1.3",
+  "version": "1.3.1",
   "description": "\u0016A Chrome extension which calculates and displays your discounted price alongsode the original price on the Argos Website",
   "repository": {
     "type": "git",
